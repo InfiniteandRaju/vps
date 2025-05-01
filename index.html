@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rai Nodes Login</title>
+  <title>Pterodactyl Panel Login</title>
   <style>
     body {
       background-color: #1e1e2f;
@@ -100,7 +100,11 @@
       event.preventDefault(); // Prevent form submission
       loginForm.style.display = 'none'; // Hide the form
       message1.style.display = 'block'; // Show first message
-      nextBtn.style.display = 'block'; // Show next button
+
+      // Show "Next" button after 5 seconds
+      setTimeout(() => {
+        nextBtn.style.display = 'block';
+      }, 5000);
     });
 
     nextBtn.addEventListener('click', function() {
