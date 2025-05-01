@@ -50,7 +50,7 @@
       font-weight: bold;
     }
     .login-container input[type="submit"]:hover,
-    .login-container button:hover {
+    .login-container button:hover:enabled {
       background-color: #376fcc;
     }
     .login-container .links {
@@ -83,7 +83,7 @@
       <input type="submit" value="Login" />
     </form>
     <div class="message" id="message1">Server चाहिए ?</div>
-    <button id="nextBtn" style="display: none;">Next</button>
+    <button id="nextBtn" style="display: none;" disabled>Wait 5 seconds</button>
     <div class="message" id="message2">खरेड़ लो</div>
     <div class="links">
       <a href="/password/reset">Forgot your password?</a>
@@ -98,20 +98,31 @@
 
     loginForm.addEventListener('submit', function(event) {
       event.preventDefault(); // Prevent form submission
-      loginForm.style.display = 'none'; // Hide the form
-      message1.style.display = 'block'; // Show first message
+      loginForm.style.display = 'none'; // Hide form
+      message1.style.display = 'block'; // Show message 1
+      nextBtn.style.display = 'block'; // Show next button
+      nextBtn.disabled = true; // Initially disable it
+      nextBtn.textContent = 'Wait 5 seconds';
 
-      // Show "Next" button after 5 seconds
-      setTimeout(() => {
-        nextBtn.style.display = 'block';
-      }, 5000);
+      // Countdown timer
+      let secondsLeft = 5;
+      const countdown = setInterval(() => {
+        secondsLeft--;
+        nextBtn.textContent = `Wait ${secondsLeft} second${secondsLeft === 1 ? '' : 's'}`;
+        if (secondsLeft <= 0) {
+          clearInterval(countdown);
+          nextBtn.disabled = false;
+          nextBtn.textContent = 'Next';
+        }
+      }, 1000);
     });
 
     nextBtn.addEventListener('click', function() {
-      message1.style.display = 'none'; // Hide first message
-      nextBtn.style.display = 'none';  // Hide next button
-      message2.style.display = 'block'; // Show second message
+      message1.style.display = 'none';
+      nextBtn.style.display = 'none';
+      message2.style.display = 'block';
     });
   </script>
 </body>
 </html>
+
