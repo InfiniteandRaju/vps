@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rai Nodes Login</title>
+  <title>Pterodactyl Panel Login</title>
   <style>
     body {
       background-color: #1e1e2f;
@@ -71,6 +71,13 @@
       font-size: 1.1em;
       display: none;
     }
+    .discord-link {
+      color: #4e88ff;
+      text-decoration: underline;
+      display: block;
+      margin-top: 10px;
+      font-size: 0.95em;
+    }
   </style>
 </head>
 <body>
@@ -84,7 +91,11 @@
     </form>
     <div class="message" id="message1">Server चाहिए ?</div>
     <button id="nextBtn" style="display: none;" disabled>Wait 5 seconds</button>
-    <div class="message" id="message2">खरेड़ लो</div>
+    <div class="message" id="message2">
+      खरेड़ लो from Rai Nodes.<br>
+      Create a ticket on Rai Nodes Discord server.<br>
+      <a class="discord-link" href="https://discord.gg/frnugSRQSU" target="_blank">Discord server link - https://discord.gg/frnugSRQSU</a>
+    </div>
     <div class="links">
       <a href="/password/reset">Forgot your password?</a>
     </div>
@@ -97,14 +108,13 @@
     const nextBtn = document.getElementById('nextBtn');
 
     loginForm.addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent form submission
-      loginForm.style.display = 'none'; // Hide form
-      message1.style.display = 'block'; // Show message 1
-      nextBtn.style.display = 'block'; // Show next button
-      nextBtn.disabled = true; // Initially disable it
+      event.preventDefault();
+      loginForm.style.display = 'none';
+      message1.style.display = 'block';
+      nextBtn.style.display = 'block';
+      nextBtn.disabled = true;
       nextBtn.textContent = 'Wait 5 seconds';
 
-      // Countdown timer
       let secondsLeft = 5;
       const countdown = setInterval(() => {
         secondsLeft--;
@@ -125,4 +135,3 @@
   </script>
 </body>
 </html>
-
