@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pterodactyl Panel Login</title>
+  <style>
+    body {
+      background-color: #1e1e2f;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
+    .login-container {
+      background-color: #2a2a40;
+      padding: 40px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .login-container input[type="email"],
+    .login-container input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      background-color: #3a3a55;
+      color: #fff;
+    }
+    .login-container input[type="submit"],
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      background-color: #4e88ff;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .login-container input[type="submit"]:hover,
+    .login-container button:hover {
+      background-color: #376fcc;
+    }
+    .login-container .links {
+      margin-top: 15px;
+      text-align: center;
+    }
+    .login-container .links a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 0.9em;
+    }
+    .login-container .links a:hover {
+      text-decoration: underline;
+    }
+    .message {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.1em;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container" id="loginContainer">
+    <h2>Rai Nodes</h2>
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="email" name="email" placeholder="Email Address" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <input type="submit" value="Login" />
+    </form>
+    <div class="message" id="message1">Server चाहिए ?</div>
+    <button id="nextBtn" style="display: none;">Next</button>
+    <div class="message" id="message2">खरेड़ लो</div>
+    <div class="links">
+      <a href="/password/reset">Forgot your password?</a>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const message1 = document.getElementById('message1');
+    const message2 = document.getElementById('message2');
+    const nextBtn = document.getElementById('nextBtn');
+
+    loginForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+      loginForm.style.display = 'none'; // Hide the form
+      message1.style.display = 'block'; // Show first message
+      nextBtn.style.display = 'block'; // Show next button
+    });
+
+    nextBtn.addEventListener('click', function() {
+      message1.style.display = 'none'; // Hide first message
+      nextBtn.style.display = 'none';  // Hide next button
+      message2.style.display = 'block'; // Show second message
+    });
+  </script>
+</body>
+</html>
